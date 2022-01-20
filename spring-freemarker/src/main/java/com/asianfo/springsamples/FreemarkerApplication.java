@@ -3,9 +3,7 @@ package com.asianfo.springsamples;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.websocket.servlet.TomcatWebSocketServletWebServerCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -14,11 +12,11 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @MapperScan("com.asianfo.springsamples.freemarker.mapper")
-public class App 
+public class FreemarkerApplication
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(App.class,args);
+        SpringApplication.run(FreemarkerApplication.class,args);
         System.out.println( "Hello World!" );
     }
     @Bean
