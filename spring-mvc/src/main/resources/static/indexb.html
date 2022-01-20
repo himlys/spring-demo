@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!--    <meta http-equiv="Cache-Control" content="no-cache">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!--    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'; object-src 'none';">-->
+    <meta http-equiv="Content-Security-Policy" content="script-src http://localhost:10223/ data: 'unsafe-inline' ;
+    style-src 'self' ;frame-src http://localhost:18080">
+    <!--    <meta http-equiv="X-Frame-Options" content="DENY">-->
+    <script src="1.0.0/index.js"></script>
+    <!--    <script src="data:text/javascript,alert(321)"></script>-->
+    <script src="filesystem: /Users/lizhanyong/Desktop/a.js"></script>
+</head>
+<script>
+    $.ajax({
+        url: "/headercheck/aqb/key/132/value/32?a=1",
+        async: false,
+        cache: true,
+        method: 'post',
+        data: JSON.stringify({"a": 1, "b": 2}),
+        contentType: 'application/json'
+    });
+
+</script>
+</html>

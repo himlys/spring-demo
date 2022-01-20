@@ -1,0 +1,27 @@
+spring:
+  freemarker:
+    template-loader-path: classpath:static
+  redis:
+    host: 192.168.129.6
+    password: yourpass
+    port: 16327
+  cache:
+    cache-names: tm_enum,product
+  datasource:
+    url: jdbc:mysql://192.168.129.6:13306/lizhanyong
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: lizhanyong
+    password: lizhanyong
+#logging:
+#  level:
+#    root: debug
+asiainfo:
+  cache:
+    - name: tm_enum
+      ttl: 1800
+      cache-null-values: false
+      use-prefix: true
+    - name: product_page
+      ttl: 86400
+      cache-null-values: false
+      use-prefix: true

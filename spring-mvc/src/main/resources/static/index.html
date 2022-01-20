@@ -1,0 +1,158 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!--    <meta http-equiv="Cache-Control" content="no-cache">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!--    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'; object-src 'none';">-->
+    <meta http-equiv="Content-Security-Policy" content="script-src http://localhost:10223/ data: 'unsafe-inline' ;
+    style-src 'self' ;frame-src http://localhost:18080">
+    <!--    <meta http-equiv="X-Frame-Options" content="DENY">-->
+    <script src="1.0.0/index.js"></script>
+    <!--    <script src="data:text/javascript,alert(321)"></script>-->
+    <script src="filesystem: /Users/lizhanyong/Desktop/a.js"></script>
+    <!--    <style>-->
+    <!--        #a {-->
+    <!--          background-color: red;-->
+    <!--        }-->
+    <!--    </style>-->
+    <!--    <style>-->
+    <!--        @import url("http://localhost:10223/headercheck/index.css");-->
+    <!--    </style>-->
+    <!--    <link href="http://localhost:10223/headercheck/index.css" rel="stylesheet" type="text/css" />-->
+
+</head>
+<script>
+    $.ajax({
+        url: "/headercheck/abc/an?a=1",
+        async: false,
+        cache: true,
+        method: 'post',
+        data: JSON.stringify({"a": 1, "b": 2}),
+        contentType: 'application/json'
+    });
+    $.ajax({url: "/headercheck/t", async: false, cache: true, method: 'get'});
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+            console.log('Page was loaded from cache.');
+            location.reload()
+        } else {
+            console.log('Page was NOT loaded from cache.');
+        }
+    });
+
+    function c() {
+        location.href = "/headercheck/user.html";
+    }
+
+    var n = $.cookie('name');
+    var s = document.cookie;
+    console.log(s)
+    console.log(n)
+    var param = '<User><id>123</id><name>myName</name></User>'
+    $.ajax({
+        url: "/headercheck/beant?a=1", async: false, cache: true,
+        method: 'post', data: '<User><id>123</id><name>myName</name></User>',
+        contentType: 'application/xml',
+        headers: {
+            Accept: "application/json; charset=utf-8"
+        }
+        , success: function () {
+
+        }, error: function (param) {
+            console.log(param)
+        }
+    });
+    var fa = new FormData();
+    fa.append("a",1);
+    fa.append("b",1);
+    $.ajax({
+        url: "/headercheck/ssa?c=12", async: false, cache: true,
+        method: 'post', data: fa,
+        contentType: false,
+        processData: false,
+        headers: {
+            Accept: "application/json; charset=utf-8"
+        }
+        , success: function () {
+
+        }, error: function (param) {
+            console.log(param)
+        }
+    });
+    $.ajax({
+        url: "/headercheck/ssd?name=12",
+        method: 'post', data: JSON.stringify({"a":1,"b":2}),
+
+        contentType: "application/json;charset=utf-8",
+        dataType: "json"
+        , success: function () {
+
+        }, error: function (param) {
+            console.log(param)
+        }
+    });
+    $.ajax({
+        url: "/headercheck/sse",
+        method: 'post', data: JSON.stringify({id:1,name:2}),
+        contentType: "application/json;charset=utf-8",
+        dataType: "json"
+        , success: function () {
+
+        }, error: function (param) {
+            console.log(param)
+        }
+    });
+    $.ajax({
+        url: "/headercheck/ssf?name=12",
+        method: 'post', data: {"a":1,"b":2}
+        , success: function () {
+
+        }, error: function (param) {
+            console.log(param)
+        }
+    });
+</script>
+<input type="button" id="a" onclick="c()" style="background-color: cornsilk" value="点击"></input>
+
+<!--<iframe src="http://localhost:18080/queryCenter/0.html"></iframe>-->
+<form action="ssb" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/>
+    <input type="text" name="name">
+    <input type="text" name="tt">
+    <input type="submit" name="submit">
+</form>
+<form>
+    <input type="file" id="bfile"/>
+    <input type="text" id="bname">
+    <input type="text" id="tt">
+    <input type="button" value="submitb" id="ttt">
+</form>
+<script type="application/javascript">
+    $(document).on('click','#ttt',function(){
+        var f = new FormData();
+        var file = document.getElementById("bfile").files[0];
+        f.append("file",file);
+        var j = {};
+        j.bname = document.getElementById("bname").value;
+        j.tt = document.getElementById("tt").value;
+        f.append("name",j);
+        f.append("a",1);
+        $.ajax({
+            url: "/headercheck/ssf?a=1",
+            method: 'post', data: f,
+            contentType: false,
+            processData: false,
+            headers: {
+                Accept: "application/json; charset=utf-8"
+            }
+            , success: function () {
+
+            }, error: function (param) {
+                console.log(param)
+            }
+        });
+    });
+</script>
+</html>
